@@ -1,0 +1,82 @@
+- hosts: localhost
+  gather_facts: no
+  vars:
+    rg_name: dfed
+    stg_acct_name: '{{ rg_name }}'
+    azure_location: westus
+    vm_admin_username: {{ admusr }}
+    vm_admin_password: {{ admpwd }}
+ 
+  tasks:
+    - name: Ensure resource group {{ rg_name }}
+      azure_rm_resourcegroup:
+        name: '{{ rg_name }}'
+        location: '{{ azure_location }}'
+        
+    - name: Ensure storage account {{ stg_acct_name }}
+      azure_rm_storageaccount:
+        name: '{{ stg_acct_name }}'
+        location: '{{ azure_location }}'
+        account_type: Premium_LRS
+        resource_group: '{{ rg_name }}'
+
+    - name: Ensure virtual network
+      azure_rm_virtualnetwork: 
+        name: test-vnet
+        location: '{{ azure_location }}'
+        resource_group: '{{ rg_name }}'
+        address_prefixes_cidr: ["10.9.0.0/16"]
+
+    - name: Ensure subnet
+      azure_rm_subnet:
+        name: test-vnet-subnet001
+        resource_group: '{{ rg_name }}'
+        virtual_network_name: test-vnet
+        address_prefix_cidr: 10.9.0.0/24
+
+    - name: Ensure virtual machine
+      azure_rm_virtualmachine:
+        name: 'test001'
+        location: '{{ azure_location }}'
+        resource_group: '{{ rg_name }}'
+        admin_username: '{{ vm_admin_username }}'
+        admin_password: '{{ vm_admin_password }}'
+        image: 
+          publisher: OpenLogic
+          offer: CentOS
+          sku: 7.3
+          version: latest
+        open_ports: [22,80]
+        storage_account_name: '{{ stg_acct_name }}'
+        vm_size: Standard_DS1
+      register: vm_output
+
+    - debug: var=vm_output
+
+    - add_host:
+        name: '{{ vm_output.ansible_facts.azure_vm.name }}'
+        groups: dynamic_vm
+        ansible_user: '{{ vm_admin_username }}'
+        ansible_password: '{{ vm_admin_password }}'
+        ansible_connection: ssh
+        ansible_host: '{{ vm_output.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}'
+
+- hosts: dynamic_vm
+  gather_facts: no
+  
+  pre_tasks:
+  - name: Ensure ssh is answering
+    local_action: wait_for
+    args:
+      host: '{{ ansible_host | default(inventory_hostname) }}'
+      port: 22
+
+  # DO STUFF HERE
+
+  - shell: whoami
+    register: shellout
+
+  - debug: var=shellout
+
+
+
