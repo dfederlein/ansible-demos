@@ -1,0 +1,23 @@
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - name: Provision a set of instances
+      ec2:
+         aws_access_key: 
+         aws_secret_key: 
+         key_name: jajackso
+         group_id: sg-69de660e
+         instance_type: t2.micro
+         image: ami-af4333cf
+         wait: true
+         region: us-west-1
+         exact_count: 2
+         count_tag:
+            Count: dfed
+         instance_tags:
+            Name: dfed
+            Count: dfed
+      register: ec2
