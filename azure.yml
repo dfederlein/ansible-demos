@@ -69,7 +69,7 @@
      open_ports: [22,80,443]
      storage_account_name: "{{ stg_acct_name }}"
      vm_size: Standard_DS1
-   register: vm_output
+    register: vm_output
 
   - add_host:
      name: "{{ vm_output.ansible_facts.azure_vm.name }}"
