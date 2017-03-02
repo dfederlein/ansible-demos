@@ -6,38 +6,38 @@
 
     - name: Provision a set of instances elk
       ec2:
-         aws_access_key: {{ AWS_ACCESS_KEY }}
-         aws_secret_key: {{ AWS_SECRET_KEY }}
-         key_name: dfed
-         group_id: sg-69de660e
-         instance_type: t2.micro
-         image: ami-af4333cf
-         wait: true
-         region: us-west-1
-         exact_count: 1
-         count_tag:
-            Count: dfed
-         instance_tags:
-            Name: dfed
-            Count: dfed
-            func: elk
+        aws_access_key: {{ AWS_ACCESS_KEY }}
+        aws_secret_key: {{ AWS_SECRET_KEY }}
+        key_name: dfed
+        group_id: sg-69de660e
+        instance_type: t2.micro
+        image: ami-af4333cf
+        wait: true
+        region: us-west-1
+        exact_count: 1
+        count_tag:
+          Count: dfed
+        instance_tags:
+          Name: dfed
+          Count: dfed
+          func: elk
       register: ec2
 
     - name: Provision a set of instances nginx
       ec2:
-         aws_access_key: {{ AWS_ACCESS_KEY }}
-         aws_secret_key: {{ AWS_SECRET_KEY }}
-         key_name: dfed
-         group_id: sg-69de660e
-         instance_type: t2.micro
-         image: ami-af4333cf
-         wait: true
-         region: us-west-1
-         exact_count: 1
-         count_tag:
-            Count: dfed
-         instance_tags:
-            Name: dfed
-            Count: dfed
-            func: nginx
+        aws_access_key: {{ AWS_ACCESS_KEY }}
+        aws_secret_key: {{ AWS_SECRET_KEY }}
+        key_name: dfed
+        group_id: sg-69de660e
+        instance_type: t2.micro
+        image: ami-af4333cf
+        wait: true
+        region: us-west-1
+        exact_count: 1
+        count_tag:
+          Count: dfed
+        instance_tags:
+          Name: dfed
+          Count: dfed
+          func: nginx
       register: ec2
