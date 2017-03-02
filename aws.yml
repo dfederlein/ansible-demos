@@ -4,26 +4,7 @@
 
   tasks:
 
-    - name: Provision a set of instances
-      ec2:
-         aws_access_key: {{ AWS_ACCESS_KEY }}
-         aws_secret_key: {{ AWS_SECRET_KEY }}
-         key_name: dfed
-         group_id: sg-69de660e
-         instance_type: t2.micro
-         image: ami-af4333cf
-         wait: true
-         region: us-west-1
-         exact_count: 2
-         count_tag:
-            Count: dfed
-         instance_tags:
-            Name: dfed
-            Count: dfed
-            func: web
-      register: ec2
-
-    - name: Provision a set of instances 2 electric boogaloo
+    - name: Provision a set of instances elk
       ec2:
          aws_access_key: {{ AWS_ACCESS_KEY }}
          aws_secret_key: {{ AWS_SECRET_KEY }}
@@ -39,10 +20,10 @@
          instance_tags:
             Name: dfed
             Count: dfed
-            func: db
+            func: elk
       register: ec2
 
-    - name: Provision a set of instances 3 tokyo drift
+    - name: Provision a set of instances nginx
       ec2:
          aws_access_key: {{ AWS_ACCESS_KEY }}
          aws_secret_key: {{ AWS_SECRET_KEY }}
@@ -58,24 +39,5 @@
          instance_tags:
             Name: dfed
             Count: dfed
-            func: monitoring
-      register: ec2
-
-    - name: Provision a set of instances 4 the goblet of fire
-      ec2:
-         aws_access_key: {{ AWS_ACCESS_KEY }}
-         aws_secret_key: {{ AWS_SECRET_KEY }}
-         key_name: dfed
-         group_id: sg-69de660e
-         instance_type: t2.micro
-         image: ami-af4333cf
-         wait: true
-         region: us-west-1
-         exact_count: 1
-         count_tag:
-            Count: dfed
-         instance_tags:
-            Name: dfed
-            Count: dfed
-            func: lb
+            func: nginx
       register: ec2
