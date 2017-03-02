@@ -36,7 +36,7 @@
 
   - name: Ensure virtual machine
     azure_rm_virtualmachine:
-     name: 'test001'
+     name: 'dfed-elk'
      location: "{{ azure_location }}"
      resource_group: "{{ rg_name }}"
      admin_username: "{{ vm_admin_username }}"
