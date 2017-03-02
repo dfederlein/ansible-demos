@@ -22,16 +22,16 @@
 
   - name: Ensure virtual network
     azure_rm_virtualnetwork: 
-     name: test-vnet
+     name: dfed-vnet
      location: "{{ azure_location }}"
      resource_group: "{{ rg_name }}"
      address_prefixes_cidr: ["10.9.0.0/16"]
 
   - name: Ensure subnet
     azure_rm_subnet:
-     name: test-vnet-subnet001
+     name: dfed-vnet-subnet001
      resource_group: "{{ rg_name }}"
-     virtual_network_name: test-vnet
+     virtual_network_name: dfed-vnet
      address_prefix_cidr: 10.9.0.0/24
 
   - name: Ensure virtual machine
