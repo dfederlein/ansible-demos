@@ -4,8 +4,7 @@
    rg_name: dfed
    stg_acct_name: "{{ rg_name }}"
    azure_location: westus
-   vm_admin_username: "{{ admusr }}"
-   vm_admin_password: "{{ admpwd }}"
+   vm_admin_username: localadmin
  
   tasks:
   - name: Ensure resource group 
