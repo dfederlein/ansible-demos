@@ -71,8 +71,9 @@
      vm_size: Standard_DS1
     register: vm_output
 
-  - name: Ensure ssh is answering
-    local_action: wait_for
-    args:
-     host: "{{ vm_output.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}"
-     port: 22
+  - name: check for ssh on created host
+    wait_for: 
+     port: 22 
+     host: "{{ vm_output.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}" 
+     search_regex: OpenSSH 
+     delay:10
