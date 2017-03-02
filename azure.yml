@@ -49,32 +49,32 @@
      open_ports: [22,80,443]
      storage_account_name: "{{ stg_acct_name }}"
      vm_size: Standard_DS1
-    register: vm_output
+#    register: vm_output
 
-  - debug: var=vm_output
+#   - debug: var=vm_output
 
-  - add_host:
-     name: "{{ vm_output.ansible_facts.azure_vm.name }}"
-     groups: tag_func_elk
-     ansible_user: "{{ vm_admin_username }}"
-     ansible_password: "{{ vm_admin_password }}"
-     ansible_connection: ssh
-     ansible_host: "{{ vm_output.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}"
+#   - add_host:
+#      name: "{{ vm_output.ansible_facts.azure_vm.name }}"
+#      groups: tag_func_elk
+#      ansible_user: "{{ vm_admin_username }}"
+#      ansible_password: "{{ vm_admin_password }}"
+#      ansible_connection: ssh
+#      ansible_host: "{{ vm_output.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}"
 
-- hosts: dynamic_vm
-  gather_facts: no
+# - hosts: tag_func_elk
+#   gather_facts: no
   
-  pre_tasks:
-  - name: Ensure ssh is answering
-    local_action: wait_for
-    args:
-     host: "{{ ansible_host | default(inventory_hostname) }}"
-     port: 22
+#   pre_tasks:
+#   - name: Ensure ssh is answering
+#     local_action: wait_for
+#     args:
+#      host: "{{ ansible_host | default(inventory_hostname) }}"
+#      port: 22
 
-  - shell: whoami
-    register: shellout
+#   - shell: whoami
+#     register: shellout
 
-  - debug: var=shellout
+#   - debug: var=shellout
 
 
 
