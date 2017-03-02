@@ -40,7 +40,8 @@
 
   - name: Create a network interface 
     azure_rm_networkinterface:
-     name: nic003
+     name: dfed-elk
+     state: present
      resource_group: "{{ rg_name }}"
      virtual_network_name: dfed-vnet
      subnet_name: dfed-vnet-subnet001
