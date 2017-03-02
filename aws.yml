@@ -14,7 +14,7 @@
      region: us-west-1
      exact_count: 1
      count_tag:
-       Count: dfed
+       Count: dfed-elk
      instance_tags:
        Name: dfed
        Count: dfed-elk
@@ -31,7 +31,7 @@
      region: us-west-1
      exact_count: 1
      count_tag:
-       Count: dfed
+       Count: dfed-nginx
      instance_tags:
        Name: dfed
        Count: dfed-nginx
