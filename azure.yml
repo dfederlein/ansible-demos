@@ -71,8 +71,6 @@
      vm_size: Standard_DS1
    register: vm_output
 
-  - debug: var=vm_output
-
   - add_host:
      name: "{{ vm_output.ansible_facts.azure_vm.name }}"
      groups: tag_func_elk
