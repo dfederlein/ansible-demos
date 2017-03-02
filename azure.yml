@@ -55,7 +55,7 @@
 
     - add_host:
         name: '{{ vm_output.ansible_facts.azure_vm.name }}'
-        groups: dynamic_vm
+        groups: tag_func_elk
         ansible_user: '{{ vm_admin_username }}'
         ansible_password: '{{ vm_admin_password }}'
         ansible_connection: ssh
@@ -71,12 +71,12 @@
       host: '{{ ansible_host | default(inventory_hostname) }}'
       port: 22
 
-  # DO STUFF HERE
-
   - shell: whoami
     register: shellout
 
   - debug: var=shellout
+
+
 
 
 
