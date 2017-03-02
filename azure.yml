@@ -33,6 +33,15 @@
      virtual_network_name: dfed-vnet
      address_prefix_cidr: 10.9.0.0/24
 
+  - name: Create a network interface using existing security group and public IP
+    azure_rm_networkinterface:
+     name: nic003
+     resource_group: "{{ rg_name }}"
+     virtual_network_name: dfed-vnet
+     subnet_name: dfed-vnet-subnet001
+     security_group_name: dfed-elk01
+     public_ip_address_name: dfedpublicip001
+
   - name: Ensure virtual machine
     azure_rm_virtualmachine:
      name: 'dfed-elk'
