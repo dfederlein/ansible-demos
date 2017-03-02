@@ -20,20 +20,3 @@
        Count: dfed-elk
        func: elk
     register: ec2
-
-  - name: Provision a set of instances nginx
-    ec2:
-     key_name: dfed
-     group_id: sg-69de660e
-     instance_type: t2.micro
-     image: ami-af4333cf
-     wait: true
-     region: us-west-1
-     exact_count: 1
-     count_tag:
-       Count: dfed-nginx
-     instance_tags:
-       Name: dfed
-       Count: dfed-nginx
-       func: nginx
-    register: ec2
