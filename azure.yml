@@ -50,7 +50,7 @@
 
   - name: Ensure virtual machine
     azure_rm_virtualmachine:
-     name: 'dfed-elk'
+     name: 'dfed-elk1'
      location: "{{ azure_location }}"
      resource_group: "{{ rg_name }}"
      admin_username: "{{ vm_admin_username }}"
@@ -71,25 +71,8 @@
      vm_size: Standard_DS1
     register: vm_output
 
-  - add_host:
-     name: "{{ vm_output.ansible_facts.azure_vm.name }}"
-     groups: tag_func_elk
-     ansible_user: localadmin
-     ansible_connection: ssh
-     ansible_host: "{{ vm_output.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}"
-
-- hosts: tag_func_elk
-  gather_facts: no
-  
-  pre_tasks:
   - name: Ensure ssh is answering
     local_action: wait_for
     args:
-     host: "{{ ansible_host | default(inventory_hostname) }}"
+     host: "{{ vm_output.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}"
      port: 22
-
-
-
-
-
-
