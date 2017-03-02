@@ -6,8 +6,8 @@
 
     - name: Provision a set of instances
       ec2:
-         aws_access_key: 
-         aws_secret_key: 
+         aws_access_key: {{ AWS_ACCESS_KEY }}
+         aws_secret_key: {{ AWS_SECRET_KEY }}
          key_name: jajackso
          group_id: sg-69de660e
          instance_type: t2.micro
