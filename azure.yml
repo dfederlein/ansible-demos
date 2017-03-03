@@ -7,46 +7,46 @@
    vm_admin_username: localadmin
  
   tasks:
-  # - name: Ensure resource group 
-  #   azure_rm_resourcegroup:
-  #    name: "{{ rg_name }}"
-  #    location: "{{ azure_location }}"
+  - name: Ensure resource group 
+    azure_rm_resourcegroup:
+     name: "{{ rg_name }}"
+     location: "{{ azure_location }}"
       
-  # - name: Ensure storage account 
-  #   azure_rm_storageaccount:
-  #    name: "{{ stg_acct_name }}"
-  #    location: "{{ azure_location }}"
-  #    account_type: Premium_LRS
-  #    resource_group: "{{ rg_name }}"
+  - name: Ensure storage account 
+    azure_rm_storageaccount:
+     name: "{{ stg_acct_name }}"
+     location: "{{ azure_location }}"
+     account_type: Premium_LRS
+     resource_group: "{{ rg_name }}"
 
-  # - name: Ensure virtual network
-  #   azure_rm_virtualnetwork: 
-  #    name: dfed-vnet01
-  #    location: "{{ azure_location }}"
-  #    resource_group: "{{ rg_name }}"
-  #    address_prefixes_cidr: ["10.4.0.0/16"]
+  - name: Ensure virtual network
+    azure_rm_virtualnetwork: 
+     name: dfed-vnet01
+     location: "{{ azure_location }}"
+     resource_group: "{{ rg_name }}"
+     address_prefixes_cidr: ["10.4.0.0/16"]
 
-  # - name: Ensure subnet
-  #   azure_rm_subnet:
-  #    name: dfed-vnet01-subnet001
-  #    resource_group: "{{ rg_name }}"
-  #    virtual_network_name: dfed-vnet01
-  #    address_prefix_cidr: 10.4.1.0/24
+  - name: Ensure subnet
+    azure_rm_subnet:
+     name: dfed-vnet01-subnet001
+     resource_group: "{{ rg_name }}"
+     virtual_network_name: dfed-vnet01
+     address_prefix_cidr: 10.4.1.0/24
 
-  # - name: Create a public IP 
-  #   azure_rm_publicipaddress:
-  #    resource_group: "{{ rg_name }}"
-  #    name: dfedpublicip001
+  - name: Create a public IP 
+    azure_rm_publicipaddress:
+     resource_group: "{{ rg_name }}"
+     name: dfedpublicip001
 
-  # - name: Configure network interface 
-  #   azure_rm_networkinterface:
-  #    name: dfed-elk885
-  #    location: "{{ azure_location }}"
-  #    resource_group: "{{ rg_name }}"
-  #    virtual_network_name: dfed-vnet01
-  #    subnet_name: dfed-vnet-subnet001
-  #    security_group_name: dfed-elk01
-  #    public_ip_address_name: dfedpublicip001
+  - name: Configure network interface 
+    azure_rm_networkinterface:
+     name: dfed-elk885
+     location: "{{ azure_location }}"
+     resource_group: "{{ rg_name }}"
+     virtual_network_name: dfed-vnet01
+     subnet_name: dfed-vnet-subnet001
+     security_group_name: dfed-elk01
+     public_ip_address_name: dfedpublicip001
 
   - name: Ensure virtual machine
     azure_rm_virtualmachine:
