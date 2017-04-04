@@ -7,7 +7,7 @@
   - name: Provision a set of instances elk
     ec2:
      key_name: dfed
-     group_id: sg-69de660e
+     group_id: sg-c96112a0
      instance_type: t2.micro
      image: ami-6a2d760f
      wait: true
