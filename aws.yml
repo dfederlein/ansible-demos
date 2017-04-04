@@ -9,9 +9,9 @@
      key_name: dfed
      group_id: sg-69de660e
      instance_type: t2.micro
-     image: ami-af4333cf
+     image: ami-6a2d760f
      wait: true
-     region: us-west-1
+     region: us-east-2
      exact_count: 1
      count_tag:
        Count: dfed-elk
