@@ -3,6 +3,7 @@
   hosts: all
   become: true
 
-  roles:
-    - { role: role1, when: "'group1' in group_names"}
-    - { role: role2, when: "'group2' in group_names" }
+  tasks: []
+#  roles:
+#    - { role: role1, when: "'group1' in group_names"}
+#    - { role: role2, when: "'group2' in group_names" }
