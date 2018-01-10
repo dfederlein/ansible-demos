@@ -4,7 +4,7 @@
 - name: Install Mysql package
   yum: name={{ item }} state=present
   with_items:
-   - mysql-server
+   - mariadb-server
    - MySQL-python
 
 - name: Configure SELinux to start mysql on any port
