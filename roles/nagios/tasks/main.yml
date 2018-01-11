@@ -5,7 +5,6 @@
   yum: pkg={{ item }} state=present
   with_items:
    - nagios
-   - nagios-plugins
    - nagios-plugins-nrpe
    - nagios-plugins-ping
    - nagios-plugins-ssh
