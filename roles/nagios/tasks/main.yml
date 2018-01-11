@@ -1,16 +1,15 @@
 ---
 # This will install nagios
 
-- name: install nagios
+- name: install nagios repo
   yum: pkg={{ item }} state=present
   with_items:
-   - nagios
-   - nagios-plugins-nrpe
-   - nagios-plugins-ping
-   - nagios-plugins-ssh
-   - nagios-plugins-http
-   - nagios-plugins-mysql
-   - nagios-devel
+    - https://repo.nagios.com/nagios/6/nagios-repo-6-2.el6.noarch.rpm
+
+- name: install nagiosxi
+  yum: pkg={{ item }} state=present
+  with_items:
+    - nagiosxi
   notify: restart httpd
 
 - name: create nagios config dir
