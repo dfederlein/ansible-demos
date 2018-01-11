@@ -4,12 +4,16 @@
 - name: install nagios repo
   yum: pkg={{ item }} state=present
   with_items:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    - https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
     - https://repo.nagios.com/nagios/6/nagios-repo-6-2.el6.noarch.rpm
 
 - name: install nagiosxi
   yum: pkg={{ item }} state=present
   with_items:
     - nagiosxi
+    - php
+    - perl
   notify: restart httpd
 
 - name: create nagios config dir
