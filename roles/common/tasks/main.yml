@@ -1,9 +1,6 @@
 ---
 # This role contains common plays that will run on all nodes.
 
-- name: upgrade all packages
-  yum: name=* state=latest
-
 - name: Install python bindings for SE Linux
   yum: name={{ item }} state=present
   with_items:

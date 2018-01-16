@@ -10,13 +10,13 @@
   yum: pkg={{ item }} state=present
   with_items:
     - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-   # - https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+    #- https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
     - https://repo.nagios.com/nagios/7/nagios-repo-7-2.el7.noarch.rpm
 
 - name: install nagios
   yum: pkg={{ item }} state=present
   with_items:
-    - nagiosxi
+    - nagios
     - dejavu-lgc-sans-fonts
     - dejavu-lgc-sans-mono-fonts
     - graphviz-gd
