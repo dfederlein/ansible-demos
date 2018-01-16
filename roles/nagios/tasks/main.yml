@@ -16,7 +16,7 @@
 - name: install nagios
   yum: pkg={{ item }} state=present
   with_items:
-    - nagiosxi
+    - nagios
     - dejavu-lgc-sans-fonts
     - dejavu-lgc-sans-mono-fonts
     - graphviz-gd
