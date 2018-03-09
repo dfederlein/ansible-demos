@@ -49,7 +49,6 @@
   with_items:
     - webservers.cfg
     - dbservers.cfg
-    - lbservers.cfg
   notify: restart nagios
 
 - name: start nagios
