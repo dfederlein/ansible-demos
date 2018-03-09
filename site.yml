@@ -28,14 +28,14 @@
   tags:
   - web
 
-# Configure and deploy the load balancer(s).
-- hosts: lbservers
+# # Configure and deploy the load balancer(s).
+# - hosts: lbservers
 
-  roles:
-  - haproxy
+#   roles:
+#   - haproxy
   
-  tags:
-  - lb
+#   tags:
+#   - lb
 
 # Configure and deploy the Nagios monitoring node(s).
 - hosts: monitoring
