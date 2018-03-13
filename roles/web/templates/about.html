@@ -6,18 +6,15 @@
  </br>
   <a href=http://{{ ansible_default_ipv4.address }}/index.html>Homepage</a>
  </br>
-<?php 
- Print "Hello, World! I am a web server configured using Ansible and I am : ";
- echo exec('hostname');
- Print  "</BR>";
-echo  "List of Databases: </BR>";
-        {% for host in groups['dbservers'] %}
-                $link = mysqli_connect('{{ hostvars[host].ansible_default_ipv4.address }}', '{{ hostvars[host].dbuser }}', '{{ hostvars[host].upassword }}') or die(mysqli_connect_error($link));
-        {% endfor %}
-        $res = mysqli_query($link, "SHOW DATABASES;");
-        while ($row = mysqli_fetch_assoc($res)) {
-                echo $row['Database'] . "\n";
-        }
-?>
+ Hello, World! I am a web server configured using Ansible. Here is my config info:
+ </br>
+ my IP: {{ hostvars[host].ansible_default_ipv4.address }}
+ </br>
+ my DB: 
+ {% for host in groups['dbservers'] %}
+Host: {{ hostvars[host].ansible_default_ipv4.address }}
+User: {{ hostvars[host].dbuser }}
+Password: {{ hostvars[host].upassword }}
+ {% endfor %}
 </body>
 </html>

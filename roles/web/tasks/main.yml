@@ -3,4 +3,4 @@
   git: repo={{ repository }} version={{ webapp_version }} dest=/var/www/html/
 
 - name: template the info page
-  template: src=about.html dest=/var/www/html/about2.html
+  template: src=about.html dest=/var/www/html/about.html
