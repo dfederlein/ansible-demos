@@ -1,6 +1,6 @@
 ---
 - name: Copy the code from repository
-  git: repo={{ repository }} version={{ webapp_version }} dest=/var/www/html/
+  git: repo={{ repository }} version={{ webapp_version }} dest=/var/www/html/ force=yes
 
 - name: template the info page
   template: src=about.html dest=/var/www/html/about.html
