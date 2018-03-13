@@ -8,7 +8,7 @@
  </br>
  Hello, World! I am a web server configured using Ansible. Here is my config info:
  </br>
- my IP: {{ ansible_facts.ansible_eth1.ipv4.address }}
+ my IP: {{ ansible_all_ipv4_addresses }}
  </br>
  my DB: 
 Host: "{{ hostvars['demovm3'].ansible_eth1.ipv4.address }}"
