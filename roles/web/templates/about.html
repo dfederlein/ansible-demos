@@ -8,13 +8,11 @@
  </br>
  Hello, World! I am a web server configured using Ansible. Here is my config info:
  </br>
- my IP: {{ hostvars[host].ansible_default_ipv4.address }}
+ my IP: {{ ansible_default_ipv4.address }}
  </br>
  my DB: 
- {% for host in groups['dbservers'] %}
-Host: {{ hostvars[host].ansible_default_ipv4.address }}
-User: {{ hostvars[host].dbuser }}
-Password: {{ hostvars[host].upassword }}
- {% endfor %}
+Host: "{{ hostvars['demovm3'].ansible_default_ipv4.address }}"
+User: "{{ dbuser }}"
+Password: "{{ upassword }}"
 </body>
 </html>
