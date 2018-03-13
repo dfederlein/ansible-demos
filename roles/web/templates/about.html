@@ -4,11 +4,11 @@
  </head>
  <body>
  </br>
-  <a href=http://{{ ansible_default_ipv4.address }}/index.html>Homepage</a>
+  <a href=http://{{ ansible_eth1_ipv4.address }}/index.html>Homepage</a>
  </br>
  Hello, World! I am a web server configured using Ansible. Here is my config info:
  </br>
- my IP: {{ ansible_default_ipv4.address }}
+ my IP: {{ ansible_eth1_ipv4.address }}
  </br>
  my DB: 
 Host: "{{ hostvars['demovm3'].ansible_default_ipv4.address }}"
