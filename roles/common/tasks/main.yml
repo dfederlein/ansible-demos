@@ -19,6 +19,9 @@
    - nagios-plugins-procs
    - nagios-plugins-load
    - nagios-plugins-disk
+   - nagios-plugins-http
+   - nagios-plugins-ssh
+   - nagios-plugins-ping
 
 - name: Install ntp
   yum: name=ntp state=present
