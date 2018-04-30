@@ -6,7 +6,7 @@
   with_items:
     - php
 
-- name: install nagios and other repos 
+- name: install nagios and other repos
   yum: pkg={{ item }} state=present
   with_items:
     - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -26,11 +26,24 @@
     - php-snmp
   notify: restart httpd
 
+- name: install some useful nagios plugins
+  yum: name={{ item }} state=present
+  with_items:
+   - nagios-nrpe
+   - nagios-plugins-swap
+   - nagios-plugins-users
+   - nagios-plugins-procs
+   - nagios-plugins-load
+   - nagios-plugins-disk
+   - nagios-plugins-ping
+   - nagios-plugins-ssh
+   - nagios-plugins-http
+
 - name: create nagios config dir
   file: path=/etc/nagios/ansible-managed state=directory
 
 - name: create nagios spool dir
-  file: path=/var/log/nagios/spool/checkresults state=directory owner=nagios group=nagios 
+  file: path=/var/log/nagios/spool/checkresults state=directory owner=nagios group=nagios
 
 - name: configure nagios
   copy: src=nagios.cfg dest=/etc/nagios/nagios.cfg

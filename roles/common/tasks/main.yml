@@ -11,19 +11,6 @@
   yum: name=epel-release state=present
   when: ansible_distribution == 'Centos'
 
-- name: install some useful nagios plugins
-  yum: name={{ item }} state=present
-  with_items:
-   - nagios-nrpe
-   - nagios-plugins-swap
-   - nagios-plugins-users
-   - nagios-plugins-procs
-   - nagios-plugins-load
-   - nagios-plugins-disk
-   - nagios-plugins-http
-   - nagios-plugins-ssh
-   - nagios-plugins-ping
-
 - name: Install ntp
   yum: name=ntp state=present
   tags: ntp
