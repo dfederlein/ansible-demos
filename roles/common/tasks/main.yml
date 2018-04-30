@@ -7,9 +7,10 @@
    - libselinux-python
    - libsemanage-python
 
-#- name: install epel
-#  yum: name=epel-release state=present
-  
+- name: install epel
+  yum: name=epel-release state=present
+  when: ansible_distribution == 'Centos'
+
 - name: install some useful nagios plugins
   yum: name={{ item }} state=present
   with_items:
