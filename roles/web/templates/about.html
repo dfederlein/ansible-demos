@@ -8,10 +8,10 @@
  </br>
  Hello, World! I am a web server configured using Ansible. Here is my config info:
  </br>
- my IP: {{ ansible_eth1.ipv4.address }}
+ my IP: {{ ansible_default_ipv4.address }}
  </br>
  my DB: 
-Host: "{{ hostvars['demovm3'].ansible_eth1.ipv4.address }}"
+Host: "{{ hostvars['demovm3'].ansible_default_ipv4.address }}"
 User: "{{ dbuser }}"
 Password: "{{ upassword }}"
 </body>
