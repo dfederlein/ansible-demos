@@ -9,7 +9,7 @@
 
 - name: install epel
   yum: name=epel-release state=present
-  when: ansible_distribution == 'Centos'
+  when: ansible_distribution == 'CentOS'
 
 - name: Install ntp
   yum: name=ntp state=present
