@@ -33,7 +33,7 @@
   # These tasks run after the roles:
   post_tasks:
   - name: wait for webserver to come up
-    wait_for: 'host={{ inventory_hostname }} port=80 state=started timeout=80'
+    wait_for: 'host={{ ansible_ssh_host }} port=80 state=started timeout=80'
 
   # - name: enable the server in haproxy
   #   haproxy: 'state=enabled backend=myapplb host={{ inventory_hostname }} socket=/var/lib/haproxy/stats'
